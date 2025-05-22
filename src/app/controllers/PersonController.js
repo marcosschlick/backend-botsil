@@ -24,7 +24,7 @@ export class PersonController {
 
   async findById(req, res) {
     try {
-      const person = await this.service.getById(req.params.id);
+      const person = await this.service.getById(req.params.personId);
       if (!person) return res.status(404).json({ error: "Person not found" });
       res.json(person);
     } catch (error) {
