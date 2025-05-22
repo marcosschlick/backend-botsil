@@ -7,8 +7,14 @@ export class ArticleService {
   }
 
   async create(articleData) {
-    if (!articleData.title || !articleData.article_url) {
-      throw new Error("Title, category and URL are required");
+    if (
+      !articleData.title ||
+      !articleData.language ||
+      !articleData.article_url
+    ) {
+      throw new Error(
+        "The fields 'title', 'language', and 'article_url' (article URL) are required."
+      );
     }
     articleData.id = articleData.id || uuidv4();
     return this.repository.create(articleData);

@@ -4,11 +4,12 @@ import { Article } from "../entities/Article.js";
 export class ArticleRepository {
   async create(articleData) {
     const query = `
-      INSERT INTO article (title, language, publication_date, article_url)
-      VALUES ($1, $2, $3, $)
-      RETURNING *
-    `;
+    INSERT INTO article (id, title, language, publication_date, article_url)
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING *
+  `;
     const values = [
+      articleData.id,
       articleData.title,
       articleData.language,
       articleData.publication_date,

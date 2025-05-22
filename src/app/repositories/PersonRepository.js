@@ -4,11 +4,12 @@ import { Person } from "../entities/Person.js";
 export class PersonRepository {
   async create(personData) {
     const query = `
-      INSERT INTO person (full_name, email, phone, birth_date, profile_image_url)
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *
-    `;
+    INSERT INTO person (id, full_name, email, phone, birth_date, profile_image_url)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *
+  `;
     const values = [
+      personData.id,
       personData.full_name,
       personData.email,
       personData.phone,

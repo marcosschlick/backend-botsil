@@ -8,7 +8,9 @@ export class PersonService {
 
   async create(personData) {
     if (!personData.full_name || !personData.email) {
-      throw new Error("Name and email are required");
+      throw new Error(
+        "The fields 'full_name' (full name) and 'email' are required."
+      );
     }
     personData.id = personData.id || uuidv4();
     return this.repository.create(personData);

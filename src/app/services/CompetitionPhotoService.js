@@ -7,6 +7,11 @@ export class CompetitionPhotoService {
   }
 
   async create(photoData) {
+    if (!photoData.competition_id || !photoData.photo_url) {
+      throw new Error(
+        "The fields 'competition_id' (competition) and 'photo_url' (photo URL) are required."
+      );
+    }
     photoData.id = photoData.id || uuidv4();
     return this.repository.create(photoData);
   }

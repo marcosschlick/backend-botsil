@@ -7,6 +7,11 @@ export class ManualService {
   }
 
   async create(manualData) {
+    if (!manualData.modality_id || !manualData.document_url) {
+      throw new Error(
+        "The fields 'modality_id' (modality) and 'document_url' (document URL) are required."
+      );
+    }
     manualData.id = manualData.id || uuidv4();
     return this.repository.create(manualData);
   }
