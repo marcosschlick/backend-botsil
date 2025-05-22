@@ -1,8 +1,14 @@
 import { ManualRepository } from "../repositories/ManualRepository.js";
+import { v4 as uuidv4 } from "uuid";
 
 export class ManualService {
   constructor() {
     this.repository = new ManualRepository();
+  }
+
+  async create(manualData) {
+    manualData.id = manualData.id || uuidv4();
+    return this.repository.create(manualData);
   }
 
   async findAll() {

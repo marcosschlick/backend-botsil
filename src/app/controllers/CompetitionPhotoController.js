@@ -5,6 +5,15 @@ export class CompetitionPhotoController {
     this.service = new CompetitionPhotoService();
   }
 
+  async create(req, res) {
+    try {
+      const newPhoto = await this.service.create(req.body);
+      res.status(201).json(newPhoto);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
   async findAll(req, res) {
     try {
       const photos = await this.service.findAll();

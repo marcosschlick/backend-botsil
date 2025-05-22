@@ -5,6 +5,15 @@ export class ManualController {
     this.service = new ManualService();
   }
 
+  async create(req, res) {
+    try {
+      const newManual = await this.service.create(req.body);
+      res.status(201).json(newManual);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
   async findAll(req, res) {
     try {
       const manuals = await this.service.findAll();

@@ -5,6 +5,7 @@ const manualController = new ManualController();
 const router = express.Router();
 
 // manuals routes
+router.post("", (req, res) => manualController.create(req, res));
 router.get("", (req, res) => manualController.findAll(req, res));
 router.get("/:manualId", (req, res) => manualController.findById(req, res));
 
