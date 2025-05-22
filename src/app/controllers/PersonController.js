@@ -15,7 +15,7 @@ export class PersonController {
 
   async findAll(req, res) {
     try {
-      const people = await this.service.getAll();
+      const people = await this.service.findAll();
       res.json(people);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -24,7 +24,7 @@ export class PersonController {
 
   async findById(req, res) {
     try {
-      const person = await this.service.getById(req.params.personId);
+      const person = await this.service.findById(req.params.personId);
       if (!person) return res.status(404).json({ error: "Person not found" });
       res.json(person);
     } catch (error) {

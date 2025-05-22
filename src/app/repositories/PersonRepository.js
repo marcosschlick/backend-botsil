@@ -1,4 +1,5 @@
 import pool from "../../database/database.js";
+import { Person } from "../entities/Person.js";
 
 export class PersonRepository {
   async create(personData) {

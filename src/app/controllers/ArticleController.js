@@ -16,7 +16,7 @@ export class ArticleController {
 
   async findAll(req, res) {
     try {
-      const articles = await this.service.getAll();
+      const articles = await this.service.findAll();
       res.json(articles);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -25,7 +25,7 @@ export class ArticleController {
 
   async findById(req, res) {
     try {
-      const article = await this.service.getById(req.params.articleId);
+      const article = await this.service.findById(req.params.articleId);
       if (!article) return res.status(404).json({ error: "Article not found" });
       res.json(article);
     } catch (error) {

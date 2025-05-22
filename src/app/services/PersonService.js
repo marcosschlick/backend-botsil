@@ -1,4 +1,5 @@
 import { PersonRepository } from "../repositories/PersonRepository.js";
+import { v4 as uuidv4 } from "uuid";
 
 export class PersonService {
   constructor() {
@@ -9,14 +10,15 @@ export class PersonService {
     if (!personData.full_name || !personData.email) {
       throw new Error("Name and email are required");
     }
+    personData.id = personData.id || uuidv4();
     return this.repository.create(personData);
   }
 
-  async getAll() {
+  async findAll() {
     return this.repository.findAll();
   }
 
-  async getById(id) {
+  async findById(id) {
     return this.repository.findById(id);
   }
 }

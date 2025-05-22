@@ -1,4 +1,5 @@
 import { ArticleRepository } from "../repositories/ArticleRepository.js";
+import { v4 as uuidv4 } from "uuid";
 
 export class ArticleService {
   constructor() {
@@ -9,14 +10,15 @@ export class ArticleService {
     if (!articleData.title || !articleData.article_url) {
       throw new Error("Title, category and URL are required");
     }
+    articleData.id = articleData.id || uuidv4();
     return this.repository.create(articleData);
   }
 
-  async getAll() {
+  async findAll() {
     return this.repository.findAll();
   }
 
-  async getById(id) {
+  async findById(id) {
     return this.repository.findById(id);
   }
 }
