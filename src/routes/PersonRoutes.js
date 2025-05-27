@@ -5,8 +5,6 @@ const personController = new PersonController();
 const router = express.Router();
 
 // members routes
-router.post("", (req, res) => personController.create(req, res));
 router.get("", (req, res) => personController.findAll(req, res));
-router.get("/:personId", (req, res) => personController.findById(req, res));
 
 export { router as personRoutes };
