@@ -5,29 +5,10 @@ export class CompetitionPhotoController {
     this.service = new CompetitionPhotoService();
   }
 
-  async create(req, res) {
-    try {
-      const newPhoto = await this.service.create(req.body);
-      res.status(201).json(newPhoto);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
-  }
-
   async findAll(req, res) {
     try {
       const photos = await this.service.findAll();
       res.json(photos);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  }
-
-  async findById(req, res) {
-    try {
-      const photo = await this.service.findById(req.params.photoId);
-      if (!photo) return res.status(404).json({ error: "Photo not found" });
-      res.json(photo);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
