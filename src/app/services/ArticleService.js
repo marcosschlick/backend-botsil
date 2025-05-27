@@ -6,25 +6,7 @@ export class ArticleService {
     this.repository = new ArticleRepository();
   }
 
-  async create(articleData) {
-    if (
-      !articleData.title ||
-      !articleData.language ||
-      !articleData.article_url
-    ) {
-      throw new Error(
-        "The fields 'title', 'language', and 'article_url' (article URL) are required."
-      );
-    }
-    articleData.id = articleData.id || uuidv4();
-    return this.repository.create(articleData);
-  }
-
   async findAll() {
     return this.repository.findAll();
-  }
-
-  async findById(id) {
-    return this.repository.findById(id);
   }
 }
