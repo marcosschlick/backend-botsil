@@ -1,6 +1,7 @@
 export class Manual {
-  constructor({ id, manual_url }) {
+  constructor({ id, title, manual_url }) {
     this.id = id;
-    this.document_url = manual_url;
+    this.title = title;
+    this.manual_url = manual_url;
   }
 }
