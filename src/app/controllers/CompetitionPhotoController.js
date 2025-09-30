@@ -5,9 +5,11 @@ export class CompetitionPhotoController {
     this.service = new CompetitionPhotoService();
   }
 
-  async findAll(req, res) {
+  async findByCompetition(req, res) {
     try {
-      const photos = await this.service.findAll();
+      const photos = await this.service.findByCompetition(
+        req.params.competition_id
+      );
       res.json(photos);
     } catch (error) {
       res.status(500).json({ error: error.message });
