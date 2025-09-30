@@ -1,10 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { articleRoutes } from "./routes/ArticleRoutes.js";
-import { manualRoutes } from "./routes/ManualRoutes.js";
-import { personRoutes } from "./routes/PersonRoutes.js";
-import { competitionPhotoRoutes } from "./routes/CompetitionPhotoRoutes.js";
+import { competitionRoutes } from "./routes/CompetitionRoutes.js";
+import { memberRoutes } from "./routes/MemberRoutes.js";
+import { projectRoutes } from "./routes/ProjectRoutes.js";
 
 dotenv.config();
 
@@ -20,9 +19,8 @@ app.use(
 
 app.use(express.json());
 
-app.use("/articles", articleRoutes);
-app.use("/manuals", manualRoutes);
-app.use("/members", personRoutes);
-app.use("/photos", competitionPhotoRoutes);
+app.use("/competitions", competitionRoutes);
+app.use("/members", memberRoutes);
+app.use("/projects", projectRoutes);
 
 export default app;
