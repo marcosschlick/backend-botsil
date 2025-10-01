@@ -12,6 +12,6 @@ export class ProjectPhotoRepository {
     const query =
       "SELECT * FROM projects_photos WHERE project_id = $1 AND is_primary = true";
     const { rows } = await pool.query(query, [project_id]);
-    return rows.length > 0 ? new Competition(rows[0]) : null;
+    return rows.length > 0 ? new ProjectPhoto(rows[0]) : null;
   }
 }

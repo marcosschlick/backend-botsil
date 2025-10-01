@@ -12,6 +12,6 @@ export class CompetitionPhotoRepository {
     const query =
       "SELECT * FROM competitions_photos WHERE competition_id = $1 AND is_primary = true";
     const { rows } = await pool.query(query, [competition_id]);
-    return rows.length > 0 ? new Competition(rows[0]) : null;
+    return rows.length > 0 ? new CompetitionPhoto(rows[0]) : null;
   }
 }
