@@ -5,6 +5,6 @@ const photoController = new PhotoController();
 const router = express.Router();
 
 // photo routes
-router.get("/:type", (req, res) => photoController.findById(req, res));
+router.get("/:type", (req, res) => photoController.findByType(req, res));
 
 export { router as photoRoutes };
