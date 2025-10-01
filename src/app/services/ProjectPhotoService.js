@@ -8,4 +8,8 @@ export class ProjectPhotoService {
   async findByProject(project_id) {
     return this.repository.findByProject(project_id);
   }
+
+  async findByProjectAndIsPrimary(project_id) {
+    return this.repository.findByProjectAndIsPrimary(project_id);
+  }
 }

@@ -14,5 +14,8 @@ router.get("/", (req, res) => projectController.findAll(req, res));
 router.get("/photos/:project_id", (req, res) =>
   projectPhotoController.findByProject(req, res)
 );
+router.get("/photo/:project_id", (req, res) =>
+  projectPhotoController.findByProjectAndIsPrimary(req, res)
+);
 
 export { router as projectRoutes };

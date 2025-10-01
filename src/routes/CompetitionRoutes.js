@@ -14,5 +14,8 @@ router.get("/", (req, res) => competitionController.findAll(req, res));
 router.get("/photos/:competition_id", (req, res) =>
   competitionPhotoController.findByCompetition(req, res)
 );
+router.get("/photo/:competition_id", (req, res) =>
+  competitionPhotoController.findByCompetitionAndIsPrimary(req, res)
+);
 
 export { router as competitionRoutes };

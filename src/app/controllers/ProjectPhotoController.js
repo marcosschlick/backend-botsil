@@ -13,4 +13,15 @@ export class ProjectPhotoController {
       res.status(500).json({ error: error.message });
     }
   }
+
+  async findByProjectAndIsPrimary(req, res) {
+    try {
+      const photos = await this.service.findByProjectAndIsPrimary(
+        req.params.project_id
+      );
+      res.json(photos);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 }
