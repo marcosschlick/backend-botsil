@@ -5,7 +5,11 @@ export class CompetitionPhotoService {
     this.repository = new CompetitionPhotoRepository();
   }
 
-  async findAll() {
-    return this.repository.findAll();
+  async findByCompetition(competition_id) {
+    return this.repository.findByCompetition(competition_id);
+  }
+
+  async findByCompetitionAndIsPrimary(competition_id) {
+    return this.repository.findByCompetitionAndIsPrimary(competition_id);
   }
 }

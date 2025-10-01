@@ -2,9 +2,16 @@ import pool from "../../database/database.js";
 import { CompetitionPhoto } from "../entities/CompetitionPhoto.js";
 
 export class CompetitionPhotoRepository {
-  async findAll() {
-    const query = "SELECT * FROM competition_photos";
-    const { rows } = await pool.query(query);
+  async findByCompetition(competition_id) {
+    const query = "SELECT * FROM competitions_photos WHERE competition_id = $1";
+    const { rows } = await pool.query(query, [competition_id]);
     return rows.map((row) => new CompetitionPhoto(row));
+  }
+
+  async findByCompetitionAndIsPrimary(competition_id) {
+    const query =
+      "SELECT * FROM competitions_photos WHERE competition_id = $1 AND is_primary = true";
+    const { rows } = await pool.query(query, [competition_id]);
+    return rows.length > 0 ? new CompetitionPhoto(rows[0]) : null;
   }
 }
