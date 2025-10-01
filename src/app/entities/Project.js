@@ -1,9 +1,9 @@
 export class Project {
-  constructor({ id, name, description, status, social_links }) {
+  constructor({ id, name, description, status, github_link }) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.status = status;
-    this.social_links = social_links;
+    this.github_link = github_link;
   }
 }
