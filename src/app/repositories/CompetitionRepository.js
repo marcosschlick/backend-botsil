@@ -10,7 +10,7 @@ export class CompetitionRepository {
   }
 
   async findAll() {
-    const query = "SELECT * FROM competitions";
+    const query = "SELECT * FROM competitions ORDER BY initial_date ASC";
     const { rows } = await pool.query(query);
     return rows.map((row) => new Competition(row));
   }
