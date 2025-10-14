@@ -9,7 +9,7 @@ export class MemberRepository {
   }
 
   async findAll() {
-    const query = "SELECT * FROM members";
+    const query = "SELECT * FROM members WHERE is_active = true";
     const { rows } = await pool.query(query);
     return rows.map((row) => new Member(row));
   }
